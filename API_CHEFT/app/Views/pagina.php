@@ -10,8 +10,9 @@
 
   <link rel="shortcut icon" type="image/x-icon" href="./assets/img/img/LOGO CHEF TABLE-01.png" />
   <link rel="stylesheet" href="./assets/css2/cheftable.css">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Poller+One&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Poller+One&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -249,17 +250,32 @@
         </p>
       </div>
       <!-- secciones de formulario  -->
-      <div class="column-half">
-        <h3>Formulario de contacto</h3>
-        <p>*Campos requeridos</p>
-        <form action="" class="formulario">
-          <input type="text" placeholder="Tu nombre">
-          <input type="text" placeholder="Asunto">
-          <input type="text" placeholder="Tu Email">
-          <textarea name="" id="" cols="30" rows="10" placeholder="DETALLES"></textarea>
-          <button type="submit">ENVIAR</button>
-        </form>
+      <div class="column-half text-center">
+    <h3>Ver Video</h3>
+    <p>Haz clic en el ícono para ver el tutorial de inicio.</p>
+    
+    <!-- Ícono de reproducir (play) -->
+    <i class="fas fa-play-circle fa-4x" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#videoModal"></i>
+
+    <!-- Modal para mostrar el video -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="videoModalLabel">Como iniciar sesión </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Contenedor del video de YouTube -->
+            <div class="ratio ratio-16x9">
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+</div>
+
     </div>
   </section>
   </main>
@@ -320,7 +336,7 @@
       </div>
     </div>
   </footer>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

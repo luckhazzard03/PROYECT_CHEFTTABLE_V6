@@ -29,9 +29,11 @@
         <h2>Bienvenido</h2>
       </div>
       <div><i class="fa-solid fa-heart"></i></div>
-
-    
-	  <div class="collapse navbar-collapse d-flex flex-row-reverse bd-highlight" id="navbarSupportedContent">
+      <div>
+        <i class="fa-solid fa-question-circle" title="Ayuda" style="color: green; margin-left: 8px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#helpModal"></i>
+      </div>
+      <div class="collapse navbar-collapse d-flex flex-row-reverse bd-highlight" id="navbarSupportedContent">
+        <div class="btn-group dropstart">
 			<div class="btn-group dropstart">
 				<button type="button" title="Profile" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="bi bi-person-circle"></i>
@@ -42,3 +44,20 @@
 				</ul>
 			</div>	
     </header>
+
+    <<!-- Modal de Ayuda -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="helpModalLabel">Ayuda en Video</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/sM27-g6Zdb4" title="YouTube video" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
