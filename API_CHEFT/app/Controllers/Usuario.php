@@ -32,8 +32,11 @@ class Usuario extends Controller
     {
         if ($this->request->isAJAX()) {
             $dataModel = $this->getDataModel();
+
             // Encriptar la contraseña antes de insertar en la base de datos
-            $dataModel['Password'] = password_hash($dataModel['Password'], PASSWORD_DEFAULT);
+            $hashedPassword = password_hash($dataModel['Password'], PASSWORD_DEFAULT);
+            // Encriptar la contraseña antes de insertar en la base de datos
+            $dataModel['Password'] = substr($hashedPassword, 0, 7); // Truncar a 7 caracteres
 
             // Query Insert CodeIgniter
             if ($this->usuarioModel->insert($dataModel)) {
@@ -85,8 +88,10 @@ class Usuario extends Controller
 
             // Verificar si se debe actualizar la contraseña
             if (!empty($dataModel['Password'])) {
+                // Encriptar la nueva contraseña y truncar a 7 caracteres
+                $hashedPassword = password_hash($dataModel['Password'], PASSWORD_DEFAULT);
                 // Encriptar la nueva contraseña
-                $dataModel['Password'] = password_hash($dataModel['Password'], PASSWORD_DEFAULT);
+                $dataModel['Password'] = substr($hashedPassword, 0, 7);
             } else {
                 // Si la contraseña no se proporciona, mantener la existente
                 unset($dataModel['Password']);
