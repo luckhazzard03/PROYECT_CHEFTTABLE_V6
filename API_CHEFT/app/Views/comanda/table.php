@@ -1,3 +1,39 @@
+<div class="cards">
+	<div class="card-single">
+		<div>
+			<h2>ADMIN</h2>
+			<span>ROL ID</span>
+			<h1>1</h1>
+		</div>
+		<div>
+			<i class="fa-solid fa-upload" style="color: #141b2f;"></i>
+		</div>
+	</div>
+
+	<div class="card-single">
+		<div>
+			<h2>CHEF</h2>
+			<span>ROL ID</span>
+			<h1>2</h1>
+		</div>
+		<div>
+			<i class="fa-solid fa-arrow-down" style="color: #141b2f;"></i>
+		</div>
+	</div>
+
+	<div class="card-single">
+		<div>
+			<h1>MESERO</h1>
+			<span>ROL ID</span>
+			<h1>3</h1>
+
+		</div>
+		<div>
+			<i class="fa-solid fa-bars-progress" style="color: #141b2f;"></i>
+		</div>
+	</div>
+
+</div>
 <div class="table-responsive mx-auto">
 	<table class="table table-hover" id="table-index">
 		<thead class="table-dark">
@@ -8,7 +44,7 @@
 				<th scope="col">TotalPlatos</th>
 				<th scope="col">PrecioTotal</th>
 				<th scope="col">TipoMenu</th>
-				<th scope="col">Usuario</th>
+				<th scope="col">Rol</th>
 				<th scope="col">Mesa</th>
 				<th scope="col">Actions</th>
 			</tr>
@@ -33,9 +69,7 @@
 						
 							<?php echo $obj['Total_platos']; ?>
 						</td>
-                        <td>
-							<?php echo $obj['Precio_Total']; ?>
-						</td>
+                        <td><?php echo number_format($obj['Precio_Total'], 2); ?></td> <!-- Muestra el precio total -->
                         <td>
 							<?php echo $obj['Tipo_Menu']; ?>
 						</td>
@@ -66,7 +100,7 @@
 				<th scope="col">TotalPlatos</th>
 				<th scope="col">PrecioTotal</th>
 				<th scope="col">TipoMenu</th>
-				<th scope="col">Usuario</th>
+				<th scope="col">Rol</th>
 				<th scope="col">Mesa</th>
 				<th scope="col">Actions</th>
 			</tr>

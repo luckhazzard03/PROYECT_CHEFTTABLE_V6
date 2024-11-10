@@ -33,6 +33,11 @@ class Comanda extends Controller
 	{
 		if ($this->request->isAJAX()) {
 			$dataModel = $this->getDataModel();
+
+			// Calcular el total
+			$totalPlatos = (int)$dataModel['Total_platos'];
+			$precioTotal = (float)$dataModel['Precio_Total'];
+			$dataModel['Precio_Total'] = $totalPlatos * $precioTotal; //
 			//Query Insert Codeigniter
 			if ($this->comandaModel->insert($dataModel)) {
 				$data['message'] = 'success';
@@ -83,20 +88,21 @@ class Comanda extends Controller
 		if ($this->request->isAJAX()) {
 			$today = date("Y-m-d  H:i:s");
 			$id = $this->request->getVar($this->primaryKey);
+			// Obtener los datos del modelo
 			$dataModel = [
 				'Fecha' => $this->request->getVar('Fecha'),
 				'Hora' => $this->request->getVar('Hora'),
-				'Total_platos' => $this->request->getVar('Total_platos'),
-				'Precio_Total' => $this->request->getVar('Precio_Total'),
+				'Total_platos' => (int)$this->request->getVar('Total_platos'),
+				'Precio_Total' => (float)$this->request->getVar('Precio_Total'),
 				'Tipo_Menu' => $this->request->getVar('Tipo_Menu'),
 				'idUsuario_fk' => $this->request->getVar('idUsuario_fk'),
 				'idMesa_fk' => $this->request->getVar('idMesa_fk'),
 				'create_at' => $this->request->getVar('create_at'),
-				'update_at' => $this->request->getVar('update_at'),
-				
-				
-
+				'update_at' => $today,
 			];
+	
+			// Calcular el total
+			$dataModel['Total_Precio'] = $dataModel['Total_platos'] * $dataModel['Precio_Total'];
 			//Update Data Model
 			if ($this->comandaModel->update($id, $dataModel)) {
 				$data['message'] = 'success';

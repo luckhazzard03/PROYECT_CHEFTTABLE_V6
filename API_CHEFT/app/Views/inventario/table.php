@@ -1,3 +1,40 @@
+<div class="cards">
+	<div class="card-single">
+		<div>
+			<h2>ADMIN</h2>
+			<span>ROL ID</span>
+			<h1>1</h1>
+		</div>
+		<div>
+			<i class="fa-solid fa-upload" style="color: #141b2f;"></i>
+		</div>
+	</div>
+
+	<div class="card-single">
+		<div>
+			<h2>CHEF</h2>
+			<span>ROL ID</span>
+			<h1>2</h1>
+		</div>
+		<div>
+			<i class="fa-solid fa-arrow-down" style="color: #141b2f;"></i>
+		</div>
+	</div>
+
+	<div class="card-single">
+		<div>
+			<h1>MESERO</h1>
+			<span>ROL ID</span>
+			<h1>3</h1>
+
+		</div>
+		<div>
+			<i class="fa-solid fa-bars-progress" style="color: #141b2f;"></i>
+		</div>
+	</div>
+
+</div>
+
 <div class="table-responsive mx-auto">
 	<table class="table table-hover" id="table-index">
 		<thead class="table-dark">
@@ -6,7 +43,7 @@
 				<th scope="col">Producto</th>
 				<th scope="col">Cantidad</th>
 				<th scope="col">CantidadMinima</th>
-				<th scope="col">IDUSUARIO</th>
+				<th scope="col">Rol</th>
 				<th scope="col">Actions</th>
 			</tr>
 		</thead>
@@ -48,7 +85,7 @@
 				<th scope="col">Producto</th>
 				<th scope="col">Cantidad</th>
 				<th scope="col">CantidadMinima</th>
-				<th scope="col">IDUSUARIO</th>
+				<th scope="col">Rol</th>
 				<th scope="col">Actions</th>
 			</tr>
 		</tfoot>
