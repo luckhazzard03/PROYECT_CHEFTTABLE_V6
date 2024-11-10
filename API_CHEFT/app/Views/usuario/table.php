@@ -46,7 +46,7 @@
 				<th scope="col">Password</th>
 				<th scope="col">Email</th>
 				<th scope="col">Telefono</th>
-				<th scope="col">idRoles_fk</th>
+				<th scope="col">Rol</th>
 				<th scope="col">Actions</th>
 			</tr>
 		</thead>
@@ -93,7 +93,7 @@
 				<th scope="col">Password</th>
 				<th scope="col">Email</th>
 				<th scope="col">Telefono</th>
-				<th scope="col">idRoles_fk</th>
+				<th scope="col">Rol</th>
 				<th scope="col">Actions</th>
 			</tr>
 		</tfoot>
