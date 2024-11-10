@@ -25,6 +25,17 @@ class Usuario extends Controller
     {
         $this->data['title'] = "USUARIOS";
         $this->data[$this->model] = $this->usuarioModel->orderBy($this->primaryKey, 'ASC')->findAll();
+        // Mapeo de roles
+    $roles = [
+        1 => 'ADMIN',
+        2 => 'CHEF',
+        3 => 'MESERO'
+    ];
+
+    // Reemplazar idRoles_fk con el nombre del rol
+    foreach ($this->data[$this->model] as &$obj) {
+        $obj['Rol'] = isset($roles[$obj['idRoles_fk']]) ? $roles[$obj['idRoles_fk']] : 'Desconocido';
+    }
         return view('usuario/usuario_view', $this->data);
     }
 

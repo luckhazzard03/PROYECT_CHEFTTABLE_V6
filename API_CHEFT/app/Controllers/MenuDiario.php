@@ -26,6 +26,17 @@ class MenuDiario extends Controller
 	{
 		$this->data['title'] = "MENUDIARIO";
 		$this->data[$this->model] = $this->menuDiarioModel->orderBy($this->primaryKey, 'ASC')->findAll();
+		// Mapeo de menús
+		$menus = [
+			1 => 'Corriente',
+			2 => 'Ejecutivo',
+			3 => 'Especial'
+		];
+	
+		// Reemplazar Menu_id_fk con el nombre del menú
+		foreach ($this->data[$this->model] as &$obj) {
+			$obj['Menu'] = isset($menus[$obj['Menu_id_fk']]) ? $menus[$obj['Menu_id_fk']] : 'Desconocido';
+		}
 		return view('menudiario/menudiario_view', $this->data);
 	}
 	//This method consists of creating, obtains the data from the POST method, return Json 

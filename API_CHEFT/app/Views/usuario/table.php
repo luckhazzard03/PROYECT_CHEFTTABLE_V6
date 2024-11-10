@@ -71,7 +71,7 @@
 							<?php echo $obj['Telefono']; ?>
 						</td>
 						<td>
-							<?php echo $obj['idRoles_fk']; ?>
+							<?php echo $obj['Rol']; ?>
 						</td>
 
 

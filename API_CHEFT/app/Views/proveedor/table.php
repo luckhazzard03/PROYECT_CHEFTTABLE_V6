@@ -32,7 +32,7 @@
 							<?php echo $obj['Tipo']; ?>
 						</td>
 						<td>
-							<?php echo $obj['idUsuario_fk']; ?>
+							<?php echo $obj['Rol']; ?>
 						</td>
 
 						<td>
