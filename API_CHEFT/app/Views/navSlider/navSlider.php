@@ -1,6 +1,6 @@
 <?php
 $current_url = basename($_SERVER['REQUEST_URI']); // Obtener solo la parte final de la URL
-$role = session()->get('role'); // Obtener el ID del rol almacenado en la sesión
+$role = session()->get('role'); // Obtener el rol almacenado en la sesión
 ?>
 
 <input type="checkbox" id="nav-toggle" />
@@ -14,96 +14,82 @@ $role = session()->get('role'); // Obtener el ID del rol almacenado en la sesió
     <!-- Secciones del menú -->
     <div class="sidebar-menu">
         <ul>
-            <!-- Roles -->
-            <?php if ($role == 1 ): ?>
+            <!-- Módulo de Roles (Solo para Administrador) -->
+            <?php if ($role == 'Admin'): ?>
                 <li>
                     <a href="<?= base_url('role') ?>" class="<?= $current_url == 'role' ? 'active' : '' ?>">
                         <i class="fa-solid fa-unlock"></i> <span>Roles</span>
                     </a>
                 </li>
             <?php endif; ?>
-           
-            <!-- Usuarios -->
-            <?php if ($role == 1 ): ?>
+
+            <!-- Módulo de Usuarios (Solo para Administrador) -->
+            <?php if ($role == 'Admin'): ?>
                 <li>
                     <a href="<?= base_url('usuario') ?>" class="<?= $current_url == 'usuario' ? 'active' : '' ?>">
                         <i class="fa-solid fa-users"></i> <span>Usuarios</span>
                     </a>
                 </li>
             <?php endif; ?>
-            
-            <!-- Inventario -->
-            <?php if ($role == 1 || $role == 2): ?>
+
+            <!-- Módulos comunes para Administrador y Chef (excluyendo Roles, Cierre y Proveedores para Chef) -->
+            <?php if ($role == 'Admin' || $role == 'Chef'): ?>
                 <li>
                     <a href="<?= base_url('inventario') ?>" class="<?= $current_url == 'inventario' ? 'active' : '' ?>">
                         <i class="fa-solid fa-warehouse"></i><span>Inventario</span>
                     </a>
                 </li>
-            <?php endif; ?>
-            
-            <!-- Comanda -->
-            <?php if ($role == 1 || $role == 2 || $role == 3): ?>
-                <li>
-                    <a href="<?= site_url('comanda') ?>" class="<?= $current_url == 'comanda' ? 'active' : '' ?>">
-                        <i class="fa-solid fa-file"></i><span>Comanda</span>
-                    </a>
-                </li>
-            <?php endif; ?>
-            
-            <!-- Menú -->
-            <?php if ($role == 1 || $role == 2 || $role == 3): ?>
-                <li>
-                    <a href="<?= site_url('menu') ?>" class="<?= $current_url == 'menu' ? 'active' : '' ?>">
-                        <i class="fa-solid fa-file"></i>  <span>Menú</span>
-                    </a>
-                </li>
-            <?php endif; ?>
-            
-            <!-- Comanda Menu -->
-            <?php if ($role == 1 || $role == 2 || $role == 3): ?>
-                <li>
-                    <a href="<?= site_url('comandaMenu') ?>" class="<?= $current_url == 'comandaMenu' ? 'active' : '' ?>">
-                        <i class="fa-solid fa-file"></i> <span>Comanda Menu</span>
-                    </a>
-                </li>
-            <?php endif; ?>
-            
-            <!-- Menú Diario -->
-            <?php if ($role == 1 || $role == 2): ?>
                 <li>
                     <a href="<?= base_url('menudiario') ?>" class="<?= $current_url == 'menudiario' ? 'active' : '' ?>">
-                        <i class="fa-solid fa-file"></i> <span>Menú Diario</span>
+                        <i class="fa-solid fa-calendar"></i><span>Menú Diario</span>
                     </a>
                 </li>
-            <?php endif; ?>
-            
-            <!-- Mesa Disponible -->
-            <?php if ($role == 1 || $role == 2 || $role == 3): ?>
                 <li>
-                    <a href="<?= site_url('mesa') ?>" class="<?= $current_url == 'mesa' ? 'active' : '' ?>">
-                        <i class="fa-solid fa-table-list"></i><span>Mesa Disponible</span>
-                    </a>
-                </li>
-            <?php endif; ?>
-            
-            <!-- Proveedor -->
-            <?php if ($role == 1): ?>
-                <li>
-                    <a href="<?= site_url('proveedor') ?>" class="<?= $current_url == 'proveedor' ? 'active' : '' ?>">
+                    <a href="<?= base_url('proveedor') ?>" class="<?= $current_url == 'proveedor' ? 'active' : '' ?>">
                         <i class="fa-solid fa-truck-field"></i><span>Proveedor</span>
                     </a>
                 </li>
             <?php endif; ?>
-            
-            <!-- Cierre -->
-            <?php if ($role == 1): ?>
+
+            <!-- Módulos comunes para Administrador, Chef y Mesero -->
+            <?php if ($role == 'Admin' || $role == 'Chef' || $role == 'Mesero'): ?>
                 <li>
-                    <a href="<?= site_url('cierre') ?>" class="<?= $current_url == 'cierre' ? 'active' : '' ?>">
+                    <a href="<?= base_url('comanda') ?>" class="<?= $current_url == 'comanda' ? 'active' : '' ?>">
+                        <i class="fa-solid fa-file"></i><span>Comanda</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('menu') ?>" class="<?= $current_url == 'menu' ? 'active' : '' ?>">
+                        <i class="fa-solid fa-file"></i> <span>Menú</span>
+                    </a>
+                </li>
+                <!-- Menú Diario agregado para Mesero -->
+                <?php if ($role == 'Mesero'): ?>
+                    <li>
+                        <a href="<?= base_url('menudiario') ?>" class="<?= $current_url == 'menudiario' ? 'active' : '' ?>">
+                            <i class="fa-solid fa-calendar"></i><span>Menú Diario</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
+            <?php endif; ?>
+
+            <!-- Módulos comunes para Administrador y Mesero -->
+            <?php if ($role == 'Admin' || $role == 'Chef' || $role == 'Mesero'): ?>
+                <li>
+                    <a href="<?= base_url('mesa') ?>" class="<?= $current_url == 'mesa' ? 'active' : '' ?>">
+                        <i class="fa-solid fa-table-list"></i><span>Mesa Disponible</span>
+                    </a>
+                </li>
+            <?php endif; ?>
+
+            <!-- Módulo de Cierre (Solo para Administrador) -->
+            <?php if ($role == 'Admin'): ?>
+                <li>
+                    <a href="<?= base_url('cierre') ?>" class="<?= $current_url == 'cierre' ? 'active' : '' ?>">
                         <i class="fa-solid fa-money-check-dollar"></i> <span>Cierre</span>
                     </a>
                 </li>
             <?php endif; ?>
-            
         </ul>
     </div>
 </div>

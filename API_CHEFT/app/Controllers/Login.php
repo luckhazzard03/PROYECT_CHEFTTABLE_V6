@@ -15,35 +15,60 @@ class Login extends BaseController
 
     public function authenticate()
     {
-        // Instancia del modelo UsuarioModel para interactuar con la base de datos
+        // Instancia del modelo UsuarioModel
         $userModel = new UsuarioModel();
 
-        // Obtener el valor del parámetro 'email' enviado en la solicitud HTTP
+        // Obtener el valor del parámetro 'email' y 'password' enviados en la solicitud HTTP
         $email = $this->request->getPost('email');
-
-        // Obtener el valor del parámetro 'password' enviado en la solicitud HTTP
         $password = $this->request->getPost('password');
 
         // Verificar si 'email' y 'password' están presentes en la solicitud
         if (!$email || !$password) {
-            return redirect()->back()->with('error', 'Email and password are required.');
+            log_message('error', 'Email o contraseña no proporcionados. Email: ' . $email);
+            return redirect()->back()->with('error', 'Email y contraseña son requeridos.');
         }
 
-        // Buscar en la base de datos un usuario cuyo correo electrónico coincida con $email
-        $user = $userModel->where('Email', $email)->first();
+        // Buscar el usuario en la base de datos con su rol
+        $user = $userModel->getUserWithRole($email); 
 
-        // Verificar si no se encontró ningún usuario con el correo electrónico proporcionado o si la contraseña es incorrecta
-        if (is_null($user) || !password_verify($password, $user['Password'])) {
-            return redirect()->back()->with('error', 'Invalid email or password.');
+        log_message('debug', 'Usuario con rol: ' . json_encode($user));  // Verificar que el rol está presente
+
+        if (!$user) {
+            log_message('error', 'Usuario no encontrado para el email: ' . $email);
+            return redirect()->back()->with('error', 'Email no encontrado.');
         }
 
-        // Obtener el ID del rol del usuario
-        $roleId = $user['idRoles_fk']; // Aquí se usa el campo idRoles_fk del modelo UsuarioModel
+        // Verificar si la contraseña es correcta usando password_verify()
+        if (!password_verify($password, $user['Password'])) {
+            log_message('error', 'Contraseña incorrecta para el email: ' . $email);
+            return redirect()->back()->with('error', 'Contraseña incorrecta.');
+        }
 
-        // Guardar el ID del rol del usuario en la sesión
-        session()->set('role', $roleId);
+        // Si todo es correcto, guarda la sesión con la información relevante, incluyendo el rol
+        session()->set([
+            'user_id' => $user['idUsuario'],  // Guarda 'idUsuario'
+            'email' => $user['Email'],
+            'role' => $user['Rol'], // Asigna el nombre del rol
+        ]);
 
-        // Redirigir a la vista del menú
-        return redirect()->to(base_url('menu'));
+        // Imprimir en el log el rol que se guarda en la sesión
+        log_message('debug', 'Rol asignado al usuario: ' . $user['Rol']);  // Esto imprimirá el rol en el log
+        log_message('debug', 'Rol guardado en sesión: ' . session()->get('role'));  // Verifica si el rol está guardado correctamente
+
+        log_message('debug', 'Sesión iniciada para el usuario: ' . $user['Email']);
+        
+        // Redirigir al dashboard o menú después del login
+        return redirect()->to(base_url('menu'));  // O donde desees redirigir
+    }
+
+    public function logout()
+    {
+        // Eliminar todos los datos de sesión
+        session()->remove(['user_id', 'email', 'role']);
+    
+        log_message('debug', 'Sesión cerrada correctamente');
+        
+        // Redirigir a la vista de login
+        return redirect()->to(base_url('login'));
     }
 }

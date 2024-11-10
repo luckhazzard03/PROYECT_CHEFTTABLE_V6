@@ -21,13 +21,33 @@ class Usuario extends Controller
         $this->model = "usuario";
     }
 
+    // Método para listar usuarios
     public function index()
     {
+        // Verificar si la sesión está activa
+        $session = session();
+        if (!$session->has('user_id')) {
+            log_message('error', 'Usuario no autenticado.');
+            return redirect()->to('/login');
+        }
+
+        // Verificar el rol del usuario
+        $userRole = $session->get('role');
+        log_message('debug', 'Rol del usuario desde la sesión: ' . json_encode($userRole));
+
+        // Verificar si el rol del usuario es 'Admin'
+        if ($userRole !== 'Admin') {
+            log_message('error', 'Acceso denegado: el usuario no tiene el rol adecuado. Rol encontrado: ' . json_encode($userRole));
+            return redirect()->to('/login');
+        }
+
+        // Si el rol es adecuado, cargar la vista de usuarios
         $this->data['title'] = "USUARIOS";
         $this->data[$this->model] = $this->usuarioModel->orderBy($this->primaryKey, 'ASC')->findAll();
         return view('usuario/usuario_view', $this->data);
     }
 
+    // Método para crear un nuevo usuario
     public function create()
     {
         if ($this->request->isAJAX()) {
@@ -55,6 +75,7 @@ class Usuario extends Controller
         echo json_encode($data);
     }
 
+    // Método para obtener un solo usuario
     public function singleUsuario($id = null)
     {
         if ($this->request->isAJAX()) {
@@ -76,6 +97,7 @@ class Usuario extends Controller
         echo json_encode($data);
     }
 
+    // Método para actualizar un usuario
     public function update()
     {
         if ($this->request->isAJAX()) {
@@ -113,6 +135,7 @@ class Usuario extends Controller
         echo json_encode($data);
     }
 
+    // Método para eliminar un usuario
     public function delete($id = null)
     {
         try {
@@ -135,6 +158,7 @@ class Usuario extends Controller
         echo json_encode($data);
     }
 
+    // Método para obtener los datos del modelo
     private function getDataModel()
     {
         $data = [
@@ -150,7 +174,3 @@ class Usuario extends Controller
         return $data;
     }
 }
-
-
-
-

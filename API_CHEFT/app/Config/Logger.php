@@ -12,29 +12,27 @@ class Logger extends BaseConfig
      * Error Logging Threshold
      * --------------------------------------------------------------------------
      *
-     * You can enable error logging by setting a threshold over zero. The
-     * threshold determines what gets logged. Any values below or equal to the
-     * threshold will be logged.
+     * Puedes habilitar el registro de errores configurando un umbral superior a cero.
+     * El umbral determina qué se registra. Cualquier valor inferior o igual al umbral será registrado.
      *
-     * Threshold options are:
+     * Las opciones de umbral son:
      *
-     * - 0 = Disables logging, Error logging TURNED OFF
-     * - 1 = Emergency Messages - System is unusable
-     * - 2 = Alert Messages - Action Must Be Taken Immediately
-     * - 3 = Critical Messages - Application component unavailable, unexpected exception.
-     * - 4 = Runtime Errors - Don't need immediate action, but should be monitored.
-     * - 5 = Warnings - Exceptional occurrences that are not errors.
-     * - 6 = Notices - Normal but significant events.
-     * - 7 = Info - Interesting events, like user logging in, etc.
-     * - 8 = Debug - Detailed debug information.
-     * - 9 = All Messages
+     * - 0 = Desactiva los registros, El registro de errores APAGADO
+     * - 1 = Mensajes de emergencia - El sistema no es utilizable
+     * - 2 = Mensajes de alerta - Se debe tomar acción inmediatamente
+     * - 3 = Mensajes críticos - Componente de aplicación no disponible, excepción inesperada
+     * - 4 = Errores de ejecución - No requieren acción inmediata, pero deben ser monitoreados
+     * - 5 = Advertencias - Ocurrencias excepcionales que no son errores
+     * - 6 = Notificaciones - Eventos normales pero significativos
+     * - 7 = Información - Eventos interesantes, como un usuario iniciando sesión, etc.
+     * - 8 = Depuración - Información detallada de depuración
+     * - 9 = Todos los mensajes
      *
-     * You can also pass an array with threshold levels to show individual error types
+     * Puedes pasar un array con niveles de umbral para mostrar tipos de error individuales
      *
-     *     array(1, 2, 3, 8) = Emergency, Alert, Critical, and Debug messages
+     *     array(1, 2, 3, 8) = Mensajes de Emergencia, Alerta, Críticos y de Depuración
      *
-     * For a live site you'll usually enable Critical or higher (3) to be logged otherwise
-     * your log files will fill up very fast.
+     * Para un sitio en producción, usualmente habilitarás el nivel Crítico (3) o superior para registrar solo los errores graves.
      *
      * @var int|list<int>
      */
@@ -42,47 +40,39 @@ class Logger extends BaseConfig
 
     /**
      * --------------------------------------------------------------------------
-     * Date Format for Logs
+     * Formato de fecha para los logs
      * --------------------------------------------------------------------------
      *
-     * Each item that is logged has an associated date. You can use PHP date
-     * codes to set your own date formatting
+     * Cada mensaje registrado tiene una fecha asociada. Puedes usar códigos de fecha PHP
+     * para establecer tu propio formato de fecha.
      */
     public string $dateFormat = 'Y-m-d H:i:s';
 
     /**
      * --------------------------------------------------------------------------
-     * Log Handlers
+     * Controladores de Logs
      * --------------------------------------------------------------------------
      *
-     * The logging system supports multiple actions to be taken when something
-     * is logged. This is done by allowing for multiple Handlers, special classes
-     * designed to write the log to their chosen destinations, whether that is
-     * a file on the getServer, a cloud-based service, or even taking actions such
-     * as emailing the dev team.
+     * El sistema de registro soporta múltiples acciones para cuando algo es registrado.
+     * Esto se hace permitiendo varios manejadores, clases especiales diseñadas para escribir el log
+     * en destinos seleccionados, ya sea un archivo en el servidor, un servicio basado en la nube, o incluso
+     * enviando correos electrónicos al equipo de desarrollo.
      *
-     * Each handler is defined by the class name used for that handler, and it
-     * MUST implement the `CodeIgniter\Log\Handlers\HandlerInterface` interface.
+     * Cada controlador se define por el nombre de la clase utilizada para ese controlador y debe implementar
+     * la interfaz `CodeIgniter\Log\Handlers\HandlerInterface`.
      *
-     * The value of each key is an array of configuration items that are sent
-     * to the constructor of each handler. The only required configuration item
-     * is the 'handles' element, which must be an array of integer log levels.
-     * This is most easily handled by using the constants defined in the
-     * `Psr\Log\LogLevel` class.
-     *
-     * Handlers are executed in the order defined in this array, starting with
-     * the handler on top and continuing down.
+     * Los controladores se ejecutan en el orden que se define en este array, comenzando con el primero.
      *
      * @var array<class-string, array<string, int|list<string>|string>>
      */
     public array $handlers = [
         /*
          * --------------------------------------------------------------------
-         * File Handler
+         * Controlador de Archivos (File Handler)
          * --------------------------------------------------------------------
          */
         FileHandler::class => [
-            // The log levels that this handler will handle.
+            // Los niveles de log que este controlador manejará.
             'handles' => [
                 'critical',
                 'alert',
@@ -95,56 +85,46 @@ class Logger extends BaseConfig
             ],
 
             /*
-             * The default filename extension for log files.
-             * An extension of 'php' allows for protecting the log files via basic
-             * scripting, when they are to be stored under a publicly accessible directory.
+             * La extensión de archivo predeterminada para los archivos de log.
+             * Una extensión de 'php' permite proteger los archivos de log a través de un script básico,
+             * cuando se almacenan en un directorio accesible públicamente.
              *
-             * NOTE: Leaving it blank will default to 'log'.
+             * NOTA: Dejarlo vacío utilizará la extensión predeterminada 'log'.
              */
             'fileExtension' => '',
 
             /*
-             * The file system permissions to be applied on newly created log files.
+             * Los permisos del sistema de archivos para los archivos de log recién creados.
              *
-             * IMPORTANT: This MUST be an integer (no quotes) and you MUST use octal
-             * integer notation (i.e. 0700, 0644, etc.)
+             * IMPORTANTE: Esto debe ser un número entero (sin comillas) y debes usar notación octal
+             * (por ejemplo, 0700, 0644, etc.)
              */
             'filePermissions' => 0644,
 
             /*
-             * Logging Directory Path
+             * Ruta del directorio de logs
              *
-             * By default, logs are written to WRITEPATH . 'logs/'
-             * Specify a different destination here, if desired.
+             * Por defecto, los logs se escriben en WRITEPATH . 'logs/'
+             * Si lo deseas, puedes especificar un destino diferente aquí.
              */
-            'path' => '',
+            'path' => WRITEPATH . 'logs/',
         ],
 
         /*
-         * The ChromeLoggerHandler requires the use of the Chrome web browser
-         * and the ChromeLogger extension. Uncomment this block to use it.
+         * El controlador ChromeLoggerHandler requiere el uso del navegador Chrome
+         * y de la extensión ChromeLogger. Descomenta este bloque para usarlo.
          */
         // 'CodeIgniter\Log\Handlers\ChromeLoggerHandler' => [
-        //     /*
-        //      * The log levels that this handler will handle.
-        //      */
-        //     'handles' => ['critical', 'alert', 'emergency', 'debug',
-        //                   'error', 'info', 'notice', 'warning'],
+        //     'handles' => ['critical', 'alert', 'emergency', 'debug', 'error', 'info', 'notice', 'warning'],
         // ],
 
         /*
-         * The ErrorlogHandler writes the logs to PHP's native `error_log()` function.
-         * Uncomment this block to use it.
+         * El controlador ErrorlogHandler escribe los logs en la función nativa `error_log()` de PHP.
+         * Descomenta este bloque para usarlo.
          */
         // 'CodeIgniter\Log\Handlers\ErrorlogHandler' => [
-        //     /* The log levels this handler can handle. */
         //     'handles' => ['critical', 'alert', 'emergency', 'debug', 'error', 'info', 'notice', 'warning'],
-        //
-        //     /*
-        //     * The message type where the error should go. Can be 0 or 4, or use the
-        //     * class constants: `ErrorlogHandler::TYPE_OS` (0) or `ErrorlogHandler::TYPE_SAPI` (4)
-        //     */
-        //     'messageType' => 0,
+        //     'messageType' => 0, // Usa ErrorlogHandler::TYPE_OS (0) o ErrorlogHandler::TYPE_SAPI (4)
         // ],
     ];
 }

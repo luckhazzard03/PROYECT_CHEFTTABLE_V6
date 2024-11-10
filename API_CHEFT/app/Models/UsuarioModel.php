@@ -16,14 +16,14 @@ class UsuarioModel extends Model
 
     protected bool $allowEmptyInserts = false;
 
-    // Dates
+    // Fechas
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    // Validation
+    // Validaciones
     protected $validationRules      = [];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -39,4 +39,13 @@ class UsuarioModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    // Método para obtener usuario con su rol
+    public function getUserWithRole($email)
+    {
+        return $this->select('usuarios.*, roles.Rol')  // Selecciona los campos de usuario y rol
+                    ->join('roles', 'roles.idRoles = usuarios.idRoles_fk')  // Realiza el JOIN con roles
+                    ->where('usuarios.Email', $email)
+                    ->first();  // Devuelve el primer resultado
+    }
 }

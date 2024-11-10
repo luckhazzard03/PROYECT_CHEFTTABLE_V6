@@ -257,14 +257,31 @@ input#check {
 }
 /* Tarjetas de "NOSOTROS " container imagen */
 .tarjeta-rest {
-  background-repeat: no-repeat;
-  height: 400px;
-  border-radius: 8px;
-  padding: 1rem 0.5rem;
-  display: flex;
-  box-shadow: 0px 0px 12px #646464;
-  align-items: end;
+  max-width: 100%; 
+  padding: 20px; 
+  margin: 20px auto; 
+  border-radius: 10px; 
+  color: white; 
+  background-color: rgba(0, 0, 0, 0.5); 
+  background: url(./assets/img/img/concepto-collage-control-calidad-estandar.jpg) center no-repeat;
+  background-size: cover; 
 }
+
+.wrap-text_tarjeta-rest {
+  max-width: 800px; 
+  margin: 0 auto; 
+}
+
+p.text-justify {
+  text-align: justify; 
+  line-height: 1.6; 
+}
+
+h3 {
+  text-align: center; 
+  margin-bottom: 15px; 
+}
+
 /* Tarjetas de "NOSOTROS "recuadros difuminados */
 .wrap-text_tarjeta-rest {
   color: #7bb92af3;
