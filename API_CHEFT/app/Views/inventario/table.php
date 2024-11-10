@@ -65,7 +65,7 @@
 							<?php echo $obj['Cantidad_Minima']; ?>
 						</td>
 						<td>
-							<?php echo $obj['idUsuario_fk']; ?>
+							<?php echo $obj['Rol']; ?>
 						</td>
 
 						<td>

@@ -26,6 +26,16 @@ class Cierre extends Controller
 	{
 		$this->data['title'] = "CIERRES";
 		$this->data[$this->model] = $this->cierreModel->orderBy($this->primaryKey, 'ASC')->findAll();
+		// Mapeo de roles
+		$roles = [
+			1 => 'ADMIN',
+			2 => 'MESERO'
+		];
+	
+		// Reemplazar idUsuario_fk con el nombre del rol
+		foreach ($this->data[$this->model] as &$obj) {
+			$obj['Rol'] = isset($roles[$obj['idUsuario_fk']]) ? $roles[$obj['idUsuario_fk']] : 'Desconocido';
+		}
 		return view('cierre/cierre_view', $this->data);
 	}
 	//This method consists of creating, obtains the data from the POST method, return Json 

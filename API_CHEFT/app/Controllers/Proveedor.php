@@ -26,6 +26,16 @@ class Proveedor extends Controller
 	{
 		$this->data['title'] = "PROVEEDOR";
 		$this->data[$this->model] = $this->proveedorModel->orderBy($this->primaryKey, 'ASC')->findAll();
+		 // Mapeo de roles
+		 $roles = [
+			1 => 'ADMIN',
+			2 => 'CHEF'
+		];
+	
+		// Reemplazar idUsuario_fk con el nombre del rol
+		foreach ($this->data[$this->model] as &$obj) {
+			$obj['Rol'] = isset($roles[$obj['idUsuario_fk']]) ? $roles[$obj['idUsuario_fk']] : 'Desconocido';
+		}
 		return view('proveedor/proveedor_view', $this->data);
 	}
 	//This method consists of creating, obtains the data from the POST method, return Json 

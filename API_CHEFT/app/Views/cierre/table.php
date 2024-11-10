@@ -4,10 +4,10 @@
 		<tr class="text-center">
 				<th scope="col">#</th>
 				<th scope="col">Fecha</th>
-				<th scope="col">Total_Dia</th>
-				<th scope="col">Total_Semana</th>
-				<th scope="col">Total_Mes</th>
-				<th scope="col">idUsuario_fk</th>
+				<th scope="col">Total Día</th>
+				<th scope="col">Total Semana</th>
+				<th scope="col">Total Mes</th>
+				<th scope="col">Rol</th>
 				<th scope="col">Actions</th>
 			</tr>
 		</thead>
@@ -32,7 +32,7 @@
 							<?php echo $obj['Total_Mes']; ?>
 						</td>
 						<td>
-							<?php echo $obj['idUsuario_fk']; ?>
+							<?php echo $obj['Rol']; ?>
 						</td>
 						<td>
 							<div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -49,10 +49,10 @@
 		<tr class="text-center">
 				<th scope="col">#</th>
 				<th scope="col">Fecha</th>
-				<th scope="col">Total_Dia</th>
-				<th scope="col">Total_Semana</th>
-				<th scope="col">Total_Mes</th>
-				<th scope="col">idUsuario_fk</th>
+				<th scope="col">Total Día</th>
+				<th scope="col">Total Semana</th>
+				<th scope="col">Total Mes</th>
+				<th scope="col">Rol</th>
 				<th scope="col">Actions</th>
 			</tr>
 		</tfoot>

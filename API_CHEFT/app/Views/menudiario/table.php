@@ -24,7 +24,7 @@
 							<?php echo $obj['Descripcion']; ?>
 						</td>
 						<td>
-							<?php echo $obj['Menu_id_fk']; ?>
+							<?php echo $obj['Menu']; ?>
 						</td>
 						
 
