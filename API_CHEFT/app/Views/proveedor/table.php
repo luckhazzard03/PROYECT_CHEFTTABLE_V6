@@ -7,7 +7,7 @@
 				<th scope="col">Direccion</th>
 				<th scope="col">Celular</th>
 				<th scope="col">Tipo</th>
-				<th scope="col">Id Usuario</th>
+				<th scope="col">Rol</th>
 				<th scope="col">Actions</th>
 			</tr>
 		</thead>
@@ -54,7 +54,7 @@
 				<th scope="col">Direccion</th>
 				<th scope="col">Celular</th>
 				<th scope="col">Tipo</th>
-				<th scope="col">Id Usuario</th>
+				<th scope="col">Rol</th>
 				<th scope="col">Actions</th>
 			</tr>
 		</tfoot>

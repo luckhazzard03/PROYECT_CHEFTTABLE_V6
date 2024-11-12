@@ -42,7 +42,7 @@
 				<th scope="col">#</th>
 				<th scope="col">Producto</th>
 				<th scope="col">Cantidad</th>
-				<th scope="col">CantidadMinima</th>
+				<th scope="col">Cant. Minima</th>
 				<th scope="col">Rol</th>
 				<th scope="col">Actions</th>
 			</tr>
@@ -84,7 +84,7 @@
 				<th scope="col">#</th>
 				<th scope="col">Producto</th>
 				<th scope="col">Cantidad</th>
-				<th scope="col">CantidadMinima</th>
+				<th scope="col">Cant. Minima</th>
 				<th scope="col">Rol</th>
 				<th scope="col">Actions</th>
 			</tr>
