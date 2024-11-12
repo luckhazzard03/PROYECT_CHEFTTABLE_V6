@@ -41,9 +41,9 @@
 				<th scope="col">#</th>
 				<th scope="col">Fecha</th>
 				<th scope="col">Hora</th>
-				<th scope="col">TotalPlatos</th>
-				<th scope="col">PrecioTotal</th>
-				<th scope="col">TipoMenu</th>
+				<th scope="col">Total Platos</th>
+				<th scope="col">Precio Total</th>
+				<th scope="col">Tipo Menu</th>
 				<th scope="col">Rol</th>
 				<th scope="col">Mesa</th>
 				<th scope="col">Actions</th>
@@ -85,9 +85,9 @@
 				<th scope="col">#</th>
 				<th scope="col">Fecha</th>
 				<th scope="col">Hora</th>
-				<th scope="col">TotalPlatos</th>
-				<th scope="col">PrecioTotal</th>
-				<th scope="col">TipoMenu</th>
+				<th scope="col">Total Platos</th>
+				<th scope="col">Precio Total</th>
+				<th scope="col">Tipo Menu</th>
 				<th scope="col">Rol</th>
 				<th scope="col">Mesa</th>
 				<th scope="col">Actions</th>

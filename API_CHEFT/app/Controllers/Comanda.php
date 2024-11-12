@@ -99,12 +99,19 @@ class Comanda extends Controller
 		if ($this->request->isAJAX()) {
 			$today = date("Y-m-d  H:i:s");
 			$id = $this->request->getVar($this->primaryKey);
+
+			// Obtener los datos del modelo
+            $totalPlatos = (int)$this->request->getVar('Total_platos');
+            $precioPorPlato = (float)$this->request->getVar('Precio_Total'); // Este debe ser el precio por plato
+
+            // Calcular el nuevo precio total
+            $nuevoPrecioTotal = $totalPlatos * $precioPorPlato;
 			// Obtener los datos del modelo
 			$dataModel = [
 				'Fecha' => $this->request->getVar('Fecha'),
 				'Hora' => $this->request->getVar('Hora'),
-				'Total_platos' => (int)$this->request->getVar('Total_platos'),
-				'Precio_Total' => (float)$this->request->getVar('Precio_Total'),
+				'Total_platos' => (int)$totalPlatos,
+                'Precio_Total' => (float)$nuevoPrecioTotal,
 				'Tipo_Menu' => $this->request->getVar('Tipo_Menu'),
 				'idUsuario_fk' => $this->request->getVar('idUsuario_fk'),
 				'idMesa_fk' => $this->request->getVar('idMesa_fk'),

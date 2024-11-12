@@ -5,7 +5,7 @@
 				<th scope="col">#</th>
 				<th scope="col">Dia</th>
 				<th scope="col">Descripcion</th>
-				<th scope="col">Menu id</th>
+				<th scope="col">Menu Tipo</th>
 				<th scope="col">Actions</th>
 			</tr>
 		</thead>
@@ -44,7 +44,7 @@
 				<th scope="col">#</th>
 				<th scope="col">Dia</th>
 				<th scope="col">Descripcion</th>
-				<th scope="col">Menu id</th>
+				<th scope="col">Menu Tipo</th>
 				<th scope="col">Actions</th>
 			</tr>
 		</tfoot>
