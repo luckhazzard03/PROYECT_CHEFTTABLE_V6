@@ -264,6 +264,15 @@ input#check {
   display: flex;
   box-shadow: 0px 0px 12px #646464;
   align-items: end;
+  max-width: 100%;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  background: url(./assets/img/img/concepto-collage-control-calidad-estandar.jpg)
+    center no-repeat;
+  background-size: cover;
 }
 /* Tarjetas de "NOSOTROS "recuadros difuminados */
 .wrap-text_tarjeta-rest {

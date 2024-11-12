@@ -259,6 +259,29 @@
           <textarea name="" id="" cols="30" rows="10" placeholder="DETALLES"></textarea>
           <button type="submit">ENVIAR</button>
         </form>
+        <div class="column-half text-center">
+    <h3>Ver Video</h3>
+    <p>Haz clic en el ícono para ver el tutorial de inicio.</p>
+    
+    <!-- Ícono de reproducir (play) -->
+    <i class="fas fa-play-circle fa-4x" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#videoModal"></i>
+    <!-- Modal para mostrar el video -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="videoModalLabel">Como iniciar sesión </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Contenedor del video de YouTube -->
+            <div class="ratio ratio-16x9">
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
       </div>
     </div>
   </section>
@@ -322,6 +345,7 @@
   </footer>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
 
