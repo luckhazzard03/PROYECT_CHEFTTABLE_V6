@@ -53,9 +53,9 @@ class Usuario extends Controller
             6 => 'MESERO4',
             7 => 'MESERO5',
             8 => 'MESERO6',
-            
+
         ];
-    
+
         // Reemplazar idRoles_fk con el nombre del rol
         foreach ($this->data[$this->model] as &$obj) {
             $obj['Rol'] = isset($roles[$obj['idRoles_fk']]) ? $roles[$obj['idRoles_fk']] : 'Desconocido';
@@ -68,9 +68,15 @@ class Usuario extends Controller
     {
         if ($this->request->isAJAX()) {
             $dataModel = $this->getDataModel();
-            // Encriptar la contraseña antes de insertar en la base de datos
-            $hashedPassword = password_hash($dataModel['Password'], PASSWORD_DEFAULT);
-            $dataModel['Password'] = substr($hashedPassword, 0, 15); // Truncar a 7 caracteres
+            // Verificar si se debe actualizar la contraseña
+            if (!empty($dataModel['Password'])) {
+                // Encriptar la nueva contraseña y almacenar el hash completo
+                $hashedPassword = password_hash($dataModel['Password'], PASSWORD_DEFAULT);
+                $dataModel['Password'] = $hashedPassword; // Almacena el hash completo
+            } else {
+                // Si la contraseña no se proporciona, mantener la existente
+                unset($dataModel['Password']); // Esto asegura que no se sobrescriba la contraseña existente
+            }
             // Query Insert CodeIgniter
             if ($this->usuarioModel->insert($dataModel)) {
                 $data['message'] = 'success';
@@ -123,12 +129,12 @@ class Usuario extends Controller
 
             // Verificar si se debe actualizar la contraseña
             if (!empty($dataModel['Password'])) {
-                // Encriptar la nueva contraseña y truncar a 7 caracteres
+                // Encriptar la nueva contraseña y almacenar el hash completo
                 $hashedPassword = password_hash($dataModel['Password'], PASSWORD_DEFAULT);
-                $dataModel['Password'] = substr($hashedPassword, 0, 15);
+                $dataModel['Password'] = $hashedPassword; // Almacena el hash completo
             } else {
                 // Si la contraseña no se proporciona, mantener la existente
-                unset($dataModel['Password']);
+                unset($dataModel['Password']); // Esto asegura que no se sobrescriba la contraseña existente
             }
 
             $dataModel['update_at'] = $today;

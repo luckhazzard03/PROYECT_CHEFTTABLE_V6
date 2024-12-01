@@ -33,23 +33,22 @@
                 <?php if (session()->getFlashdata('error')) : ?>
                     <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
                 <?php endif; ?>
-                <form id="formLogin" class="mt-2 p-1 mb-2 " action="<?= base_url('login') ?>" method="post">
+                
+                 <!-- Cambiar la acción del formulario para que apunte al método authenticate -->
+                 <form id="formLogin" class="mt-2 p-1 mb-2 " action="<?= base_url('login') ?>" method="post">
                     <div class="form-floating mb-2">                        
                         <label for="email">Email</label>
                         <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password" required>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña" required>
                         <button class="btn btn-outline-secondary" type="button" id="btn-password"><img src="./assets/img/icons/eye-slash-fill.svg" alt></button>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-primary w-100 mb-3">LOGIN</button>
                         <a href="<?= base_url('inicio') ?>" class="btn btn-secondary w-100">Inicio</a>
-
                     </div>
-
-
                 </form>
             </div>
         </div>

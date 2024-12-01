@@ -46,6 +46,22 @@ class Role extends Controller
         // Si la sesión es válida y tiene el rol adecuado, cargar la vista de roles
         $this->data['title'] = "ROLES";
         $this->data[$this->model] = $this->roleModel->orderBy($this->primaryKey, 'ASC')->findAll();
+        $roles = [
+            1 => 'ADMIN',
+            2 => 'CHEF',
+            3 => 'MESERO',
+            4 => 'MESERO2',
+            5 => 'MESERO3',
+            6 => 'MESERO4',
+            7 => 'MESERO5',
+            8 => 'MESERO6',
+
+        ];
+
+        // Reemplazar idRoles_fk con el nombre del rol
+        foreach ($this->data[$this->model] as &$obj) {
+            $obj['Rol'] = isset($roles[$obj['idRoles']]) ? $roles[$obj['idRoles']] : 'Desconocido';
+        }
         return view('role/role_view', $this->data);
     }
 
@@ -53,25 +69,28 @@ class Role extends Controller
     public function create()
     {
         if ($this->request->isAJAX()) {
-            log_message('debug', 'Datos AJAX recibidos: ' . json_encode($this->request->getPost()));
             $dataModel = $this->getDataModel();
-
+            // Encriptar la contraseña antes de insertar en la base de datos
+            //$hashedPassword = password_hash($dataModel['Password'], PASSWORD_DEFAULT);
+            //$dataModel['Password'] = substr($hashedPassword, 0, 15); // Truncar a 7 caracteres
+            // Query Insert CodeIgniter
             if ($this->roleModel->insert($dataModel)) {
-                log_message('debug', 'Rol creado con éxito: ' . json_encode($dataModel));
                 $data['message'] = 'success';
                 $data['response'] = ResponseInterface::HTTP_OK;
+                $data['data'] = $dataModel;
+                $data['csrf'] = csrf_hash();
             } else {
-                log_message('error', 'Error al crear el rol: ' . json_encode($dataModel));
                 $data['message'] = 'Error creating role';
                 $data['response'] = ResponseInterface::HTTP_NO_CONTENT;
+                $data['data'] = '';
             }
         } else {
-            log_message('error', 'Error en la solicitud AJAX.');
             $data['message'] = 'Error Ajax';
             $data['response'] = ResponseInterface::HTTP_CONFLICT;
+            $data['data'] = '';
         }
-
-        return $this->response->setJSON($data);
+        //Change array to Json 
+        echo json_encode($dataModel);
     }
 
     // Método para obtener un rol específico
@@ -92,18 +111,21 @@ class Role extends Controller
             $data['response'] = ResponseInterface::HTTP_CONFLICT;
             $data['data'] = '';
         }
-        return $this->response->setJSON($data);
+        //Change array to Json 
+        echo json_encode($data);
     }
 
     // Método para actualizar un rol existente
     public function update()
     {
         if ($this->request->isAJAX()) {
+            //$today = date("Y-m-d  H:i:s");
             $id = $this->request->getVar($this->primaryKey);
             $dataModel = [
-                'Rol' => $this->request->getVar('Rol'),
+                'idRoles' => $this->request->getVar('Rol'),
                 'Descripcion' => $this->request->getVar('Descripcion'),
-                'update_at' => date("Y-m-d H:i:s"),
+                'update_at' => $this->request->getVar('update_at'),
+
             ];
 
             if ($this->roleModel->update($id, $dataModel)) {
@@ -121,7 +143,8 @@ class Role extends Controller
             $data['response'] = ResponseInterface::HTTP_CONFLICT;
             $data['data'] = '';
         }
-        return $this->response->setJSON($data);
+        // Change array to Json
+        echo json_encode($data);
     }
 
     // Método para eliminar un rol
@@ -139,19 +162,20 @@ class Role extends Controller
                 $data['data'] = '';
             }
         } catch (\Exception $e) {
-            $data['message'] = $e->getMessage();
+            $data['message'] = $e;
             $data['response'] = ResponseInterface::HTTP_CONFLICT;
             $data['data'] = '';
         }
-        return $this->response->setJSON($data);
+        // Change array to Json
+        echo json_encode($data);
     }
 
     // Método para obtener los datos del modelo
     public function getDataModel()
     {
         $data = [
-            'idRoles' => $this->request->getVar('idRoles'),
-            'Rol' => $this->request->getVar('Rol'),
+            
+            'idRoles' => $this->request->getVar('idRoles'), // Cambiado 
             'Descripcion' => $this->request->getVar('Descripcion'),
             'create_at' => date("Y-m-d H:i:s"),
             'update_at' => date("Y-m-d H:i:s"),

@@ -43,7 +43,7 @@
 			<tr class="text-center">
 				<th scope="col">#</th>
 				<th scope="col">Nombre</th>
-				<th scope="col">Password</th>
+				
 				<th scope="col">Email</th>
 				<th scope="col">Telefono</th>
 				<th scope="col">Rol</th>
@@ -61,9 +61,7 @@
 						<td>
 							<?php echo $obj['Nombre']; ?>
 						</td>
-						<td>
-							<?php echo $obj['Password']; ?>
-						</td>
+						
 						<td>
 							<?php echo $obj['Email']; ?>
 						</td>
@@ -90,7 +88,7 @@
 			<tr class="text-center">
 				<th scope="col">#</th>
 				<th scope="col">Nombre</th>
-				<th scope="col">Password</th>
+				
 				<th scope="col">Email</th>
 				<th scope="col">Telefono</th>
 				<th scope="col">Rol</th>

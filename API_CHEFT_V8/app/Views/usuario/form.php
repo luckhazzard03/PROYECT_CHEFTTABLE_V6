@@ -31,7 +31,8 @@
             <option value="4">Mesero2</option>
             <option value="5">Mesero3</option>
             <option value="6">Mesero4</option>
-            <option value="5">Mesero5</option>
+            <option value="7">Mesero5</option>
+            <option value="8">Mesero6</option>
         </select>
         <label for="idRoles_fk">Roles</label>
     </div>
