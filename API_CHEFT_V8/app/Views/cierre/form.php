@@ -10,17 +10,17 @@
 
     <div class="form-floating mb-3">
         <input type="number" class="form-control" id="Total_Dia" name="Total_Dia" placeholder="Total Día" required>
-        <label for="Total_Dia">Total Día</label>
+        <label for="Total_Dia">Ingresa el valor cierre Día</label>
     </div>
 
     <div class="form-floating mb-3">
         <input type="number" class="form-control" id="Total_Semana" name="Total_Semana" placeholder="Total Semana" required>
-        <label for="Total_Semana">Total Semana</label>
+        <label for="Total_Semana">Ingresa el valor cierre Semana</label>
     </div>
 
     <div class="form-floating mb-3">
         <input type="number" class="form-control" id="Total_Mes" name="Total_Mes" placeholder="Total Mes" required>
-        <label for="Total_Mes">Total Mes</label>
+        <label for="Total_Mes">Ingresa el valor cierre Mes</label>
     </div>
 
     <div class="form-floating mb-3">
