@@ -3,7 +3,6 @@
 		<thead class="table-dark">
 			<tr class="text-center">
 				<th scope="col">#</th>
-				<th scope="col">No_Orden</th>
 				<th scope="col">Estado	</th>
 				<th scope="col">Capacidad	</th>
 				<th scope="col">Actions</th>
@@ -17,9 +16,7 @@
 						<td>
 							<?php echo $obj['idMesa']; ?>
 						</td>
-						<td>
-							<?php echo $obj['No_Orden']; ?>
-						</td>
+						
 						<td>
 							<?php echo $obj['Estado']; ?>
 						</td>
@@ -39,8 +36,7 @@
 		</tbody>
 		<tfoot class="table-dark">
 		<tr class="text-center">
-				<th scope="col">#</th>
-				<th scope="col">No_Orden</th>
+				<th scope="col">#</th>				
 				<th scope="col">Estado	</th>
 				<th scope="col">Capacidad	</th>
 				<th scope="col">Actions</th>

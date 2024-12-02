@@ -12,7 +12,7 @@ class MesaModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['No_Orden','Estado','Capacidad','create_at', 'update_at'];
+    protected $allowedFields    = ['Estado','Capacidad','create_at', 'update_at'];
 
     protected bool $allowEmptyInserts = false;
 
