@@ -55,3 +55,19 @@
         </tfoot>
     </table>
 </div>
+
+
+<!-- Botón para Generar Excel -->
+<button type="button" onclick="exportTableToExcel('table-index', 'comanda')" class="btn btn-primary mb-3">
+        Generar Excel
+    </button>
+<!-- Librería SheetJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+<script>
+    function exportTableToExcel(tableID, filename = '') {
+        const table = document.getElementById(tableID);
+        const workbook = XLSX.utils.table_to_book(table, { sheet: "Sheet1" });
+		filename = filename ? filename + '.xlsx' : 'excel_data.xlsx';
+        XLSX.writeFile(workbook, filename);
+    }
+</script>
