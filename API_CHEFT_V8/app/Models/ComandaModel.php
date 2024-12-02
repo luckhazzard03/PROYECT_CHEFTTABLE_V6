@@ -12,7 +12,7 @@ class ComandaModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['Fecha', 'Hora', 'Total_platos','Precio_Total', 'Tipo_Menu','idUsuario_fk','idMesa_fk','create_at','update_at'];
+    protected $allowedFields    = ['Fecha', 'Hora', 'Total_platos','Precio_Total', 'Tipo_Menu', 'Adicionales','idUsuario_fk','idMesa_fk','create_at','update_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
