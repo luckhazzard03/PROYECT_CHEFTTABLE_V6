@@ -36,10 +36,16 @@ class AddComanda extends Migration
                 'null' => false,
             ],
             'Tipo_Menu' => [
-                'type' => 'VARCHAR',                
-                
+                'type' => 'VARCHAR',         
                 'constraint' => 45, 
                 'null' => false, 
+            ],
+            // Campo adicional para almacenar los adicionales
+            'Adicionales' => [
+                'type' => 'DECIMAL', // Puedes usar TEXT o VARCHAR dependiendo de cómo quieras almacenar los adicionales
+                'constraint' => '10,2',
+                'unsigned' => true,
+                'null' => true, // Permitir que este campo sea nulo si no se seleccionan adicionales
             ],
             'idUsuario_fk' => [
                 'type' => 'INT',

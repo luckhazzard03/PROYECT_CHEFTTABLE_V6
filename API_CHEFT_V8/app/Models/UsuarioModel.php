@@ -45,7 +45,7 @@ class UsuarioModel extends Model
     {
         return $this->select('usuarios.*, roles.Rol')  // Selecciona los campos de usuario y rol
                     ->join('roles', 'roles.idRoles = usuarios.idRoles_fk')  // Realiza el JOIN con roles
-                    ->where('usuarios.Email', $email)
+                    ->where('Email', $email)
                     ->first();  // Devuelve el primer resultado
     }
 }
