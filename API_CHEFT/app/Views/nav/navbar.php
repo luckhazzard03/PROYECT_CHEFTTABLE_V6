@@ -55,7 +55,7 @@
       </div>
       <div class="modal-body">
         <div class="ratio ratio-16x9">
-          <iframe src="https://www.youtube.com/embed/sM27-g6Zdb4" title="YouTube video" allowfullscreen></iframe>
+          <iframe src="https://youtu.be/7vQ9WymIkmA" title="YouTube video" allowfullscreen></iframe>
         </div>
       </div>
     </div>

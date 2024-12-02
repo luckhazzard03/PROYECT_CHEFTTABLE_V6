@@ -268,7 +268,7 @@
           <div class="modal-body">
             <!-- Contenedor del video de YouTube -->
             <div class="ratio ratio-16x9">
-              <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video" allowfullscreen></iframe>
+              <iframe src="https://youtu.be/mzNM-AfEMkc" title="YouTube video" allowfullscreen></iframe>
             </div>
           </div>
         </div>
